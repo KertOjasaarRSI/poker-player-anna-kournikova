@@ -19,7 +19,7 @@ class Risk {
         });
     }
 
-    private sortedHandByRank(cards: Card[]): string {
+    public sortedHandByRank(cards: Card[]): string {
         const hand = this.sortedHand(cards, 'rank');
 
         return hand.map(({ rank }) => rank).join('');
