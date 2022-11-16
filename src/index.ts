@@ -16,7 +16,7 @@ app.get('/', ({ }, res) => res.send(200, 'OK'));
 
 app.post('/', (req, res) => {
     console.log('Incoming request', {
-        action: req.body.aciton,
+        action: req.body.action,
         game_state: req.body.game_state,
     });
 
