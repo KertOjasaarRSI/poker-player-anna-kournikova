@@ -40,4 +40,5 @@ export interface Player {
     stack: number;
     bet: number;
     hole_cards?: Card[];
+    amount_won?: number;
 }
