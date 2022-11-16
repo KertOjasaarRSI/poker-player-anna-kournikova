@@ -55,6 +55,7 @@ class Player {
           betCallback(0);
           break;
         case 9:
+        case 8:
           decision = 'CALL';
           this.call(betCallback, gameState);
           break;
