@@ -10,18 +10,29 @@ class Player {
     const tolerance = combinations[cardsString];
     const playersLeft = gameState.players.length - gameState.players.filter(({ status }) => status === 'out').length;
 
+    let decision = '';
     if (tolerance) {
       if (playersLeft === 2 || tolerance === 100) {
-        console.log(`[AK] cards: ${cardsString}, ALL IN`, { playersLeft, tolerance });
+        decision = 'ALL IN';
         betCallback(myPlayer.stack);
       } else {
-        console.log(`[AK] cards: ${cardsString}, call`);
+        decision = 'CALL';
         betCallback(gameState.current_buy_in - gameState.players[gameState.in_action].bet + gameState.minimum_raise);
       }
     } else {
-      console.log(`[AK] cards: ${cardsString}, check/fold`);
+      if (gameState.current_buy_in > 0) {
+        decision = 'FOLD';
+      } else {
+        decision = 'CHECK';
+      }
       betCallback(0);
     }
+    console.log(`[AK] cards: ${cardsString}, ${decision}`, {
+      amount: gameState.current_buy_in - gameState.players[gameState.in_action].bet + gameState.minimum_raise,
+      stack: myPlayer.stack,
+      playersLeft,
+      tolerance
+    });
   }
 
   public showdown(gameState: any): void {
