@@ -68,19 +68,19 @@ class Player {
 
   public showdown(gameState: GameState): void {
     try {
-    function formatCard({rank, suit}) {
-      return `${rank}${suit[0].toUpperCase()}`;
-    };
+      function formatCard({rank, suit}) {
+        return `${rank}${suit[0].toUpperCase()}`;
+      };
 
-    console.log('[AK][Showdown]', {
-      gameId: gameState.game_id,
-      hand: gameState.players.find(({id}) => id === 2).hole_cards.map((card) => formatCard(card)),
-      community: gameState.community_cards.map((card) => formatCard(card)),
-      opponenets: gameState.players.filter(({id, hole_cards}) => id !== 2 && hole_cards).map(({hole_cards}) => hole_cards.map((card) => formatCard(card))),
-    });
-  } catch {
-    console.log(gameState);
-  }
+      console.log('[AK][Showdown]', {
+        gameId: gameState.game_id,
+        hand: gameState.players.find(({id}) => id === 2).hole_cards.map((card) => formatCard(card)),
+        community: gameState.community_cards.map((card) => formatCard(card)),
+        opponenets: gameState.players.filter(({id, hole_cards}) => id !== 2 && hole_cards).map(({hole_cards}) => hole_cards.map((card) => formatCard(card))),
+      });
+    } catch {
+      console.log(gameState);
+    }
   }
 };
 
