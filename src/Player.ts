@@ -23,7 +23,7 @@ class Player {
           decision = 'ALL IN';
           betCallback(myPlayer.stack);
         } else {
-          if (gameState.current_buy_in < gameState.small_blind * 2 * 4) {
+          if (gameState.current_buy_in < gameState.small_blind * 2 * 5) {
             decision = 'CALL';
             this.call(betCallback, gameState);
           } else {
@@ -46,7 +46,7 @@ class Player {
     } else {
       let handRank = detectHandRankings([...myPlayer.hole_cards, ...gameState.community_cards]);
       const tableRank = detectHandRankings([...gameState.community_cards]);
-      
+
       if (handRank === 9 && tableRank === 9) {
         handRank = 10;
       } else if (handRank === 8 && tableRank === 9) {
