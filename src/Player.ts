@@ -4,7 +4,7 @@ import detectHandRankings from "./HandDetector";
 
 class Player {
   public call(betCallback: (bet: number) => void, gameState: GameState) {
-    betCallback(gameState.current_buy_in - gameState.players[gameState.in_action].bet + gameState.minimum_raise);
+    betCallback(gameState.current_buy_in);
   }
 
   public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
@@ -23,8 +23,17 @@ class Player {
           decision = 'ALL IN';
           betCallback(myPlayer.stack);
         } else {
-          decision = 'CALL';
-          this.call(betCallback, gameState);
+          if (gameState.current_buy_in < gameState.small_blind * 2 * 4) {
+            decision = 'CALL';
+            this.call(betCallback, gameState);
+          } else {
+            if (gameState.current_buy_in > 0) {
+              decision = 'FOLD';
+            } else {
+              decision = 'CHECK';
+            }
+            betCallback(0);
+          }
         }
       } else {
         if (gameState.current_buy_in > 0) {
@@ -58,7 +67,7 @@ class Player {
     console.log(`[AK] cards: ${cardsString}, communityCards: ${communityCards.join()}, ${decision}`, {
       gameId: gameState.game_id,
       round: gameState.round,
-      amount: gameState.current_buy_in - gameState.players[gameState.in_action].bet + gameState.minimum_raise,
+      amount: gameState.current_buy_in,
       stack: myPlayer.stack,
       playersLeft,
       tolerance,
