@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   'AA': 3,
   'KK': 3,
   'QQ': 3,
