@@ -16,6 +16,7 @@ function detectHandRankings(cards: Card[]) {
   const rankBasedCards: Card[][] = Object.values(rankBased);
   const suitBasedCards: Card[][] = Object.values(suitBased);
   const isFlush = suitBasedCards.some((x) => x.length === 5);
+  const isCloseToFlush = suitBasedCards.some((x) => x.length === 4) && cards.length < 7;
 
   let value = 10;
   if (rankBasedCards.some((x) => x.length === 4)) {
@@ -43,8 +44,8 @@ function detectHandRankings(cards: Card[]) {
     ) {
       // Two pairs
     value = 8;
-  } else if (rankBasedCards.some((x) => x.length === 2)) {
-    // Pair
+  } else if (rankBasedCards.some((x) => x.length === 2) || isCloseToFlush) {
+    // Pair or close to flush
     value = 9;
   } else {
     // High card
@@ -67,7 +68,8 @@ function detectHandRankings(cards: Card[]) {
     
     const isTopStraight = numericRankString.includes('1011121314');
     
-    const isStraight = isLowStraight 
+    const isStraight = numericRankKeysSorted.length > 4 && 
+    (isLowStraight 
      || numericRankString.includes('23456')
      || numericRankString.includes('34567') 
      || numericRankString.includes('45678')
@@ -77,7 +79,8 @@ function detectHandRankings(cards: Card[]) {
      || numericRankString.includes('89101112')
      || numericRankString.includes('910111213')
      || numericRankString.includes('910111213')
-     || isTopStraight;
+     || isTopStraight
+    );
     
     const isRoyalFlush = isTopStraight && isFlush;
     const isStraightFlush = isStraight && isFlush;
