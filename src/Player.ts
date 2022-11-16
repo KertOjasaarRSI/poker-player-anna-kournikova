@@ -1,5 +1,6 @@
 import combinations from './constants/combinations';
 import { GameState } from './interfaces/GameState';
+import detectHandRankings from "./HandDetector";
 
 class Player {
   public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
@@ -33,7 +34,8 @@ class Player {
       amount: gameState.current_buy_in - gameState.players[gameState.in_action].bet + gameState.minimum_raise,
       stack: myPlayer.stack,
       playersLeft,
-      tolerance
+      tolerance,
+      handDetector: detectHandRankings([...myPlayer.hole_cards, ...gameState.community_cards])
     });
   }
 

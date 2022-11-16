@@ -1,20 +1,4 @@
-interface Card {
-  rank:
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "J"
-    | "Q"
-    | "K"
-    | "A";
-  suite: "hearts" | "spades" | "clubs" | "diamonds";
-}
+import {Card} from "./interfaces/GameState";
 
 function detectHandRankings(cards: Card[]) {
   const groupBy = (array: Card[], key: string) => {
@@ -46,6 +30,7 @@ function detectHandRankings(cards: Card[]) {
     value = 10;
   }
 
-  console.log("[AK] Hand detection", { cards, value });
   return value;
 }
+
+export default detectHandRankings;
