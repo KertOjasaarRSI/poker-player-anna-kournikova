@@ -58,7 +58,7 @@ function detectHandRankings(cards: Card[]) {
       if (rank === 'K') return 12;
       if (rank === 'A') return 14;
       return Number(rank);
-    }).sort();
+    }).sort((a, b) => a - b);
     
     const numericRankString = numericRankKeysSorted.join('');
     
