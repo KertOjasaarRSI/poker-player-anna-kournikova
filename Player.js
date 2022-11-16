@@ -12,7 +12,7 @@ class Player {
 
     if (combinations[cardsString]) {
       console.log(`[AK] cards: ${cardsString}, call`);
-      bet(gameState.current_buy_in - gameState.players[gameState.in_action].bet + gameState.minimum_raise);
+      bet(1000);
     } else {
       console.log(`[AK] cards: ${cardsString}, check/call/fold`);
       bet(0);
