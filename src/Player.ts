@@ -44,7 +44,15 @@ class Player {
         betCallback(0);
       }
     } else {
-      const handRank = detectHandRankings([...myPlayer.hole_cards, ...gameState.community_cards]);
+      let handRank = detectHandRankings([...myPlayer.hole_cards, ...gameState.community_cards]);
+      const tableRank = detectHandRankings([...gameState.community_cards]);
+      
+      if (handRank === 9 && tableRank === 9) {
+        handRank = 10;
+      } else if (handRank === 8 && tableRank === 9) {
+        handRank = 9;
+      }
+
       switch (handRank) {
         case 10:
           if (gameState.current_buy_in > 0) {
