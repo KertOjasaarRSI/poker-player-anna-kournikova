@@ -88,7 +88,7 @@ class Player {
         status: akProfile.status,
         amountWon: akProfile.amount_won,
         community: gameState.community_cards.map((card) => formatCard(card)),
-        opponenets: gameState.players.filter(({id, hole_cards}) => id !== 2 && hole_cards).map(({hole_cards, status, amount_won}) => ({amountWon: amount_won, status, hand: hole_cards.map((card) => formatCard(card))})),
+        opponenets: gameState.players.filter(({id, hole_cards}) => id !== 2 && hole_cards).map(({hole_cards, status, amount_won}) => ({amountWon: amount_won, status, hand: JSON.stringify(hole_cards.map((card) => formatCard(card)))})),
       });
     } catch {
       console.log(gameState);
