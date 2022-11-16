@@ -28,12 +28,12 @@ function detectHandRankings(cards: Card[]) {
     // Full House
     value = 4;
   }
-  else if (
-    suitBasedCards.some((suitBased) => suitBased.length === 5)
-  ) {
-    // Flush
-    value = 5
-  }
+  // else if (
+  //   suitBasedCards.some((suitBased) => suitBased.length === 5)
+  // ) {
+  //   // Flush
+  //   value = 5
+  // }
   else if (rankBasedCards.some((rankBased) => rankBased.length === 3)) {
     // Three of a kind
     value = 7;
