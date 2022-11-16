@@ -29,7 +29,7 @@ export interface Card {
         | "Q"
         | "K"
         | "A";
-    suite: "hearts" | "spades" | "clubs" | "diamonds";
+    suit: "hearts" | "spades" | "clubs" | "diamonds";
 }
 
 export interface Player {
