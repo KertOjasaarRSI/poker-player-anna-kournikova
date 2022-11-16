@@ -1,6 +1,6 @@
 /// <reference path='../typings/index.d.ts'/>
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
+import express from 'express';
+import bodyParser from 'body-parser';
 import Player from './Player';
 
 const VERSION = "1.0.0";
