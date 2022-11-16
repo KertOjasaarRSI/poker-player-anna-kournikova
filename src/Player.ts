@@ -28,6 +28,8 @@ class Player {
       betCallback(0);
     }
     console.log(`[AK] cards: ${cardsString}, ${decision}`, {
+      gameId: gameState.game_id,
+      round: gameState.round,
       amount: gameState.current_buy_in - gameState.players[gameState.in_action].bet + gameState.minimum_raise,
       stack: myPlayer.stack,
       playersLeft,
