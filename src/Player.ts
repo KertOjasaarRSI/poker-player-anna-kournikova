@@ -1,7 +1,8 @@
 import combinations from './constants/combinations';
+import { GameState } from './interfaces/GameState';
 
 class Player {
-  public betRequest(gameState: any, betCallback: (bet: number) => void): void {
+  public betRequest(gameState: GameState, betCallback: (bet: number) => void): void {
     const cards = gameState.players.find(({ hole_cards }) => hole_cards).hole_cards;
     const cardsString = `${cards[0].rank}${cards[1].rank}`.toUpperCase();
 

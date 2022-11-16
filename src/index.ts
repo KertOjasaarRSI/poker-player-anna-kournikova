@@ -1,5 +1,5 @@
 /// <reference path='../typings/index.d.ts'/>
-import express from 'express';
+import express, { Request } from 'express';
 import bodyParser from 'body-parser';
 import Player from './Player';
 
