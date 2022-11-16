@@ -6,8 +6,6 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
-
-    gameState.minimum_raise = undefined;
     const cards = gameState.players.find(({ hole_cards }) => hole_cards).hole_cards;
     const cardsString = `${cards[0].rank}${cards[1].rank}`.toUpperCase();
 
