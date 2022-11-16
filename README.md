@@ -1,4 +1,10 @@
-poker-player-js
-===============
+# Poker Player implementation with TypeScript
 
-Javascript client skeleton for Lean Poker For more information visit: http://leanpoker.org
+TypeScript client skeleton for Lean Poker For more information visit: http://leanpoker.org
+
+# How to get started 
+
+```bash
+$ npm install
+$ npm start
+```
