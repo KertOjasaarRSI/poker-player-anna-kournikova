@@ -64,7 +64,20 @@ class Player {
           break;
         case 9:
         case 8:
-          decision = 'CALL';
+          if (
+              handRank === 8
+              || (handRank === 9 && gameState.current_buy_in < gameState.small_blind * 2 * 10)
+          ) {
+            decision = 'CALL';
+            this.call(betCallback, gameState);
+          } else {
+            if (gameState.current_buy_in > 0) {
+              decision = 'FOLD';
+            } else {
+              decision = 'CHECK';
+            }
+            betCallback(0);
+          }
           this.call(betCallback, gameState);
           break;
         default:
